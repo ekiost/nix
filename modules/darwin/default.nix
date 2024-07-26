@@ -39,6 +39,7 @@
       AlwaysShowTabBar = true;
       ShowStatusBar = true;
       IncludeDevelopMenu = true;
+      DeveloperMenuVisibility = true;
       WebKitDeveloperExtrasEnabledPreferenceKey = true;
       "WebKitPreferences.developerExtrasEnabled" = true;
     };
@@ -76,6 +77,6 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
-    casks = [ "docker" "discord" "microsoft-word" "microsoft-powerpoint" "microsoft-excel" "telegram" ];
+    casks = [ "docker" "discord" "microsoft-word" "microsoft-powerpoint" "microsoft-excel" "mos" "telegram" ];
   };
 }
