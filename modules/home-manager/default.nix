@@ -57,7 +57,7 @@
     enable = true;
     userName = "ekiost";
     userEmail = "choonkeatling@icloud.com";
-    ignores = [ ".DS_Store" ];
+    ignores = [ ".DS_Store" ".vscode" ".idea" ];
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
