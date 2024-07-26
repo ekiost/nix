@@ -25,6 +25,7 @@
         "editor.formatOnSave" = true;
         "editor.formatOnPaste" = true;
         "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
+        "git.autofetch" = true;
       };
   };
 
