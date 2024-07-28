@@ -79,6 +79,7 @@
       persistent-apps = [
         "/System/Applications/Launchpad.app"
         "/System/Applications/Messages.app"
+        "/Applications/Safari.app"
         "/Applications/Telegram.app"
         "/Applications/Discord.app"
         "/System/Applications/Mail.app"
