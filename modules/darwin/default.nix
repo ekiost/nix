@@ -50,6 +50,10 @@
       ShowDevelopMenu = true;
     };
 
+    "com.apple.dock" = {
+      expose-group-apps = true;
+    };
+
     # Control Center settings.
     "com.apple.controlcenter" = {
       BatteryShowPercentage = true;
@@ -68,15 +72,26 @@
       ShowStatusBar = true;
     };
     dock = {
-      expose-group-by-app = true;
       magnification = true;
       tilesize = 30;
       largesize = 60;
       minimize-to-application = true;
-      # persistent-apps = [
-      #   "/Applications/Safari.app"
-      #   "/System/Applications/Utilities/Terminal.app"
-      # ]
+      persistent-apps = [
+        "/System/Applications/Launchpad.app"
+        "/System/Applications/Messages.app"
+        "/Applications/Telegram.app"
+        "/Applications/Discord.app"
+        "/System/Applications/Mail.app"
+        "/System/Applications/Maps.app"
+        "/System/Applications/FaceTime.app"
+        "/System/Applications/Calendar.app"
+        "/System/Applications/Reminders.app"
+        "/System/Applications/Notes.app"
+        "/Applications/Visual Studio Code.app"
+        "/System/Applications/Utilities/Terminal.app"
+        "/System/Applications/Music.app"
+        "/System/Applications/System Settings.app"
+      ];
     };
   };
 
@@ -91,6 +106,7 @@
       "microsoft-excel"
       "mos"
       "telegram"
+      "visual-studio-code"
     ];
   };
 }

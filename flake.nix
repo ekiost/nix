@@ -15,11 +15,9 @@
     };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, mac-app-util, ... }:
+  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, ... }:
     let
       user = "choonkeatling";
       hostname = "Choon-Keats-MacBook-Air";
@@ -30,7 +28,6 @@
         specialArgs = { inherit user; };
         modules = [
           ./modules/darwin
-          mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
             home-manager = {
@@ -38,7 +35,6 @@
               useUserPackages = true;
               users.${user}.imports = [
                 ./modules/home-manager
-                mac-app-util.homeManagerModules.default
               ];
             };
           }
