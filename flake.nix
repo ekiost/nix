@@ -21,8 +21,8 @@
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, mac-app-util, ... }:
     let
-      user = "ekiost";
-      hostname = "ekiosts-MacBook-Air";
+      user = "choonkeatling";
+      hostname = "Choon-Keats-MacBook-Air";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
