@@ -2,54 +2,51 @@
   description = "My Macbook Air configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-
-  outputs =
-    inputs@{ self
-    , nix-darwin
-    , nixpkgs
-    , nix-homebrew
-    , home-manager
-    }:
+  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, mac-app-util, ... }:
     let
-      user = "choonkeatling";
-      hostname = "Choon-Keats-MacBook-Air";
+      user = "ekiost";
+      hostname = "ekiosts-MacBook-Air";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self user; };
+        system = "aarch64-darwin";
+        specialArgs = { inherit user; };
         modules = [
           ./modules/darwin
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew =
-              {
-                # Install Homebrew under the default prefix
-                enable = true;
-
-                # User owning the Homebrew prefix
-                user = user;
-
-              };
-          }
+          mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              verbose = true;
-              users."${user}" = ./modules/home-manager;
+              users.${user}.imports = [
+                ./modules/home-manager
+                mac-app-util.homeManagerModules.default
+              ];
+            };
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = user;
             };
           }
         ];

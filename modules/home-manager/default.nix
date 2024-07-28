@@ -1,13 +1,12 @@
-{ pkgs, ... }:
-{
+{ pkgs, pwnvim, ... }: {
   # This is internal compatibility configuration for home-manager, don't change this!
   home.stateVersion = "24.05";
 
-  # Let home-manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Package installation
-  home.packages = with pkgs; [ fastfetch speedtest-rs ];
+  home.packages = with pkgs; [
+    fastfetch
+    nixpkgs-fmt
+    speedtest-rs
+  ];
 
   # VSCode settings
   programs.vscode = {
@@ -48,7 +47,7 @@
       }
     ];
     shellAliases = {
-      switch = "nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/.config/nix";
+      config-switch = "darwin-rebuild switch --flake ~/.config/nix";
     };
   };
 

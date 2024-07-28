@@ -1,18 +1,12 @@
-{ pkgs, self, user, ... }:
-{
-  # The system-wide Nix configuration.
+{ pkgs, user, ... }: {
   services.nix-daemon.enable = true;
 
-  # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
-
-  # The NixOS configuration revision to use with nix-darwin.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
 
   # Used for backwards compatibility. please read the changelog before changing: `darwin-rebuild changelog`.
   system.stateVersion = 4;
 
-  # The Nixpkgs repository to use with nix-darwin.
+  # The Nixpkgs repository to use with nix-darwin and unable unfree packages.
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     config = {
@@ -27,29 +21,33 @@
   ];
 
   # Declare the user that will be running `nix-darwin`.
-  users.users.${user} = {
-    name = user;
-    home = "/Users/${user}";
+  users.users.${user}.home = "/users/${user}";
+
+  # Enable Touch ID for `sudo`.
+  security.pam.enableSudoTouchIdAuth = true;
+
+  programs.zsh.enable = true;
+
+  environment = {
+    shells = with pkgs; [ bash zsh ];
+    loginShell = pkgs.zsh;
+    systemPackages = [ pkgs.coreutils ];
   };
 
-  # The Darwin configuration.
   system.defaults.CustomUserPreferences = {
+    "com.apple.finder" = {
+      "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" = true;
+    };
+
     # Safari settings.
     "com.apple.Safari" = {
       AlwaysShowTabBar = true;
       ShowStatusBar = true;
       IncludeDevelopMenu = true;
-      DeveloperMenuVisibility = true;
-      WebKitDeveloperExtrasEnabledPreferenceKey = true;
-      "WebKitPreferences.developerExtrasEnabled" = true;
     };
 
-    # Finder settings.
-    "com.apple.finder" = {
-      FXPreferredViewStyle = "clmv";
-      _FXSortFoldersFirst = true;
-      ShowPathbar = true;
-      ShowStatusBar = true;
+    "com.apple.Safari.SandboxBroker" = {
+      ShowDevelopMenu = true;
     };
 
     # Control Center settings.
@@ -63,20 +61,36 @@
     };
   };
 
-  # The Dock settings.
-  system.defaults.dock = {
-    magnification = true;
-    tilesize = 30;
-    largesize = 60;
+  system.defaults = {
+    finder = {
+      FXPreferredViewStyle = "clmv";
+      ShowPathbar = true;
+      ShowStatusBar = true;
+    };
+    dock = {
+      expose-group-by-app = true;
+      magnification = true;
+      tilesize = 30;
+      largesize = 60;
+      minimize-to-application = true;
+      # persistent-apps = [
+      #   "/Applications/Safari.app"
+      #   "/System/Applications/Utilities/Terminal.app"
+      # ]
+    };
   };
 
-  # Enable Touch ID for `sudo`.
-  security.pam.enableSudoTouchIdAuth = true;
-
-  # The Homebrew configuration.
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
-    casks = [ "docker" "discord" "microsoft-word" "microsoft-powerpoint" "microsoft-excel" "mos" "telegram" ];
+    casks = [
+      "docker"
+      "discord"
+      "microsoft-word"
+      "microsoft-powerpoint"
+      "microsoft-excel"
+      "mos"
+      "telegram"
+    ];
   };
 }
