@@ -79,13 +79,14 @@
       persistent-apps = [
         "/System/Applications/Launchpad.app"
         "/System/Applications/Messages.app"
+        "/System/Applications/FaceTime.app"
         "/Applications/Safari.app"
         "/Applications/Telegram.app"
         "/Applications/Discord.app"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"
-        "/System/Applications/FaceTime.app"
         "/System/Applications/Calendar.app"
+        "/System/Applications/Photos.app"
         "/System/Applications/Reminders.app"
         "/System/Applications/Notes.app"
         "/Applications/Visual Studio Code.app"
@@ -108,6 +109,7 @@
       "mos"
       "telegram"
       "visual-studio-code"
+      "zoom"
     ];
   };
 }
