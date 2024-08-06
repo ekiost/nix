@@ -101,7 +101,6 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
-      "docker"
       "discord"
       "microsoft-word"
       "microsoft-powerpoint"

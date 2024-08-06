@@ -3,6 +3,8 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
+    colima
+    docker
     fastfetch
     nixpkgs-fmt
     speedtest-rs
