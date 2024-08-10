@@ -7,7 +7,7 @@
     docker
     fastfetch
     nixpkgs-fmt
-    speedtest-rs
+    speedtest-cli
   ];
 
   programs = {
