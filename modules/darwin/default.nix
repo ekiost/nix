@@ -63,6 +63,16 @@
     "com.apple.Terminal" = {
       NSWindowTabbingShoudShowTabBarKey-TTWindow-TTWindowController-TTWindowController-VT-FS = true;
     };
+
+    # Function key usage
+    "com.apple.HIToolbox" = {
+      AppleFnUsageType = 2;
+    };
+
+    # Show Music song notifications
+    "com.apple.Music" = {
+      userWantsPlaybackNotifications = false;
+    };
   };
 
   system.defaults = {
@@ -76,6 +86,10 @@
       tilesize = 30;
       largesize = 60;
       minimize-to-application = true;
+      wvous-bl-corner = 1;
+      wvous-br-corner = 1;
+      wvous-tl-corner = 1;
+      wvous-tr-corner = 1;
       persistent-apps = [
         "/System/Applications/Launchpad.app"
         "/System/Applications/Messages.app"
