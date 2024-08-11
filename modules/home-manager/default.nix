@@ -20,8 +20,6 @@
       syntaxHighlighting.enable = true;
       oh-my-zsh.enable = true;
       oh-my-zsh.plugins = [
-        "git"
-        "docker"
       ];
       initExtra = "source ~/.p10k.zsh";
       plugins = [
