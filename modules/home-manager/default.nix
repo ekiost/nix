@@ -1,17 +1,19 @@
-{ pkgs, pwnvim, ... }: {
+{ pkgs, ... }: {
+  # Set the state version for home-manager compatibility
   # This is internal compatibility configuration for home-manager, don't change this!
   home.stateVersion = "24.05";
 
+  # Define packages to be installed
   home.packages = with pkgs; [
-    colima
-    docker
-    fastfetch
-    nixpkgs-fmt
-    speedtest-cli
+    colima # Container runtime for macOS
+    docker # Containerization platform
+    fastfetch # System information tool
+    nixpkgs-fmt # Nix code formatter
+    speedtest-cli # Internet speed test tool
   ];
 
   programs = {
-    # Zsh settings
+    # Zsh configuration
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -34,7 +36,7 @@
       };
     };
 
-    # Git settingsgit config --list
+    # Git configuration
     git = {
       enable = true;
       userName = "ekiost";
@@ -46,6 +48,7 @@
       };
     };
 
+    # GitHub CLI configuration
     gh = {
       enable = true;
       extensions = [
@@ -54,5 +57,6 @@
     };
   };
 
+  # Source the Powerlevel10k configuration file
   home.file.".p10k.zsh".source = ./p10k-config/p10k.zsh;
 }
