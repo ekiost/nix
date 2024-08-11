@@ -55,6 +55,11 @@
         pkgs.gh-dash
       ];
     };
+
+    # Direnv configuration
+    direnv = {
+      enable = true;
+    };
   };
 
   # Source the Powerlevel10k configuration file
