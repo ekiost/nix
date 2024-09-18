@@ -10,6 +10,8 @@
     fastfetch # System information tool
     nixpkgs-fmt # Nix code formatter
     speedtest-cli # Internet speed test tool
+    dotnet-sdk_8 # .NET SDK 8
+    (python311.withPackages (p: with p; [ jupyter ]))
   ];
 
   programs = {

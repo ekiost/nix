@@ -137,6 +137,7 @@
     onActivation.cleanup = "zap";
     # Install cask applications
     casks = [
+      "rider"
       "discord"
       "microsoft-word"
       "microsoft-powerpoint"
