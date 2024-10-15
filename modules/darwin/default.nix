@@ -1,4 +1,8 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }:
+let
+  tempCasks = import ./modules/darwin/temporary-casks.nix;
+in
+{
   # Enable the Nix daemon service
   services.nix-daemon.enable = true;
 
@@ -137,15 +141,22 @@
     onActivation.cleanup = "zap";
     # Install cask applications
     casks = [
-      "rider"
       "discord"
+      "firefox@developer-edition"
       "microsoft-word"
       "microsoft-powerpoint"
       "microsoft-excel"
-      "mos"
+      "scroll-reverser"
       "telegram"
       "visual-studio-code"
+
+      # Temporary casks for this trimester
+      "rider"
+      "webstorm"
+      "pycharm"
       "zoom"
+      "mqtt-explorer"
+      "postman"
     ];
   };
 }

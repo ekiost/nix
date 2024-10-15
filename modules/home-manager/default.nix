@@ -10,8 +10,17 @@
     fastfetch # System information tool
     nixpkgs-fmt # Nix code formatter
     speedtest-cli # Internet speed test tool
-    dotnet-sdk_8 # .NET SDK 8
-    #(python312.withPackages (p: with p; [ jupyter ]))
+    tree # Directory listing tool
+
+    # Temporary packages for this trimester
+    dotnetCorePackages.sdk_8_0 # .NET Core SDK
+    python3
+    python3Packages.virtualenv
+    jmeter
+    ollama
+    nodejs
+    geckodriver
+    framac
   ];
 
   programs = {
