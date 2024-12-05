@@ -10,19 +10,14 @@ xcode-select --install
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-3. Download this repository to .config/nix
+3. Clone the repository
 
-4. Rename default config.nix to config.nix.before-darwin-config
-```bash
-sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-darwin-config
-```
-
-5. Run the following command to apply the configuration
+4. Run the following command to apply the configuration
 ```bash
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/.config/nix
 ```
 
-6. Reboot the system
+5. Reboot the system
 
 Subsequent updates can be applied with the following command
 ```bash
