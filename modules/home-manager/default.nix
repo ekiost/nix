@@ -6,8 +6,6 @@
     coreutils
     docker
     fastfetch
-    nil
-    nixpkgs-fmt
     speedtest-cli
     tree
   ];
