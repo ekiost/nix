@@ -91,4 +91,12 @@
       ];
     };
   };
+
+  homebrew = {
+    enable = true;
+    onActivation.cleanup = "zap";
+    casks = [
+      "visual-studio-code"
+    ];
+  };
 }

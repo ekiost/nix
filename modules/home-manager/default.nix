@@ -9,7 +9,6 @@
     nixpkgs-fmt
     speedtest-cli
     tree
-    vscode
   ];
 
   programs = {
