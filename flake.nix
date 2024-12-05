@@ -1,5 +1,5 @@
 {
-  description = "My Macbook Air configuration";
+  description = "Nix Configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -14,10 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, ... }:
+  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, mac-app-util, ... }:
     let
       user = "choonkeatling";
       hostname = "Choon-Keats-MacBook-Air";
@@ -36,13 +36,9 @@
               users.${user}.imports = [
                 ./modules/home-manager
               ];
-            };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              user = user;
+              sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
             };
           }
         ];
