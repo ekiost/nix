@@ -1,5 +1,5 @@
 {
-  description = "Nix Configuration";
+  description = "Example nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -17,35 +17,30 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs@{ nixpkgs, nix-darwin, home-manager, nix-homebrew, ... }:
-    let
-      user = "choonkeatling";
-      hostname = "Choon-Keats-MacBook-Air";
-    in
-    {
-      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit user; };
-        modules = [
-          ./modules/darwin
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user}.imports = [
-                ./modules/home-manager
-              ];
-            };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              user= user;
-            };
-          }
-        ];
-      };
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
+  let
+    hostname = "Choon-Keats-MacBook-Air";
+    user = "choonkeatling";
+  in
+  {
+    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self user; };
+      modules = [ 
+        ./modules/darwin
+        home-manager.darwinModules.home-manager {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${user} = import ./modules/home-manager;
+          };
+        }
+        nix-homebrew.darwinModules.nix-homebrew {
+          nix-homebrew = {
+            enable = true;
+            user = user;
+          };
+        }
+      ];
     };
+  };
 }

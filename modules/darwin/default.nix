@@ -1,11 +1,13 @@
-{ pkgs, user, ... }: {
-  services.nix-daemon.enable = true;
-
+{ pkgs, self, user, ... }: {
   nix.settings.experimental-features = "nix-command flakes";
 
-  nix.settings.auto-optimise-store = true;
+  system.configurationRevision = self.rev or self.dirtyRev or null;
 
   system.stateVersion = 5;
+
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  users.users.${user}.home = "/Users/${user}";
 
   nixpkgs = {
     config = {
@@ -15,8 +17,6 @@
   };
 
   fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
-
-  users.users.${user}.home = "/users/${user}";
 
   security.pam.enableSudoTouchIdAuth = true;
 
