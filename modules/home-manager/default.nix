@@ -14,6 +14,7 @@
   programs = {
     zsh = {
       enable = true;
+      oh-my-zsh.enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
@@ -21,8 +22,9 @@
       };
     };
 
-    starship = {
+    oh-my-posh = {
       enable = true;
+      useTheme = "bubblesextra";
     };
 
     git = {
