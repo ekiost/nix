@@ -6,7 +6,7 @@
     coreutils
     docker
     fastfetch
-    nixpkgs-fmt
+    nixfmt-rfc-style
     speedtest-cli
     tree
   ];
@@ -17,7 +17,7 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
-        config-switch = "darwin-rebuild switch --flake ~/.config/nix";
+        config-switch = "nix run nix-darwin --extra-experimental-features \"nix-command flakes\" -- switch --flake ~/.config/nix";
       };
     };
 

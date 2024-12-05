@@ -23,6 +23,7 @@
   system.defaults.CustomUserPreferences = {
     "com.apple.finder" = {
       "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" = true;
+      NewWindowTarget = "PfHm";
     };
 
     "com.apple.Safari" = {
@@ -30,6 +31,7 @@
       ShowStatusBar = true;
       IncludeDevelopMenu = true;
     };
+
     "com.apple.Safari.SandboxBroker" = {
       ShowDevelopMenu = true;
     };
@@ -52,6 +54,10 @@
 
     "com.apple.Music" = {
       userWantsPlaybackNotifications = false;
+      losslessEnabled = true;
+      preferredDownloadAudioQuality = 15;
+      preferredStreamPlaybackAudioQuality = 15;
+      preferredDolbyAtmosPlaySetting = 30;
     };
   };
 
@@ -96,6 +102,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
+      "discord"
+      "telegram"
       "visual-studio-code"
     ];
   };
