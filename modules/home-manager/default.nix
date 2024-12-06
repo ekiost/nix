@@ -23,7 +23,7 @@
 
     oh-my-posh = {
       enable = true;
-      useTheme = "bubblesextra";
+      useTheme = "tokyonight_storm";
     };
 
     git = {

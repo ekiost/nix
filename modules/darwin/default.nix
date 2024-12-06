@@ -103,6 +103,7 @@
     onActivation.cleanup = "zap";
     casks = [
       "discord"
+      "scroll-reverser"
       "telegram"
       "visual-studio-code"
     ];
