@@ -16,6 +16,8 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```bash
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/.config/nix
 ```
+[!NOTE]
+If the command fails, enable Full Disk Access for Terminal in System Preferences > Security & Privacy > Privacy > Full Disk Access
 
 5. Reboot the system
 

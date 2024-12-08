@@ -15,32 +15,48 @@
     };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
-  let
-    hostname = "Choon-Keats-MacBook-Air";
-    user = "choonkeatling";
-  in
-  {
-    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit self user; };
-      modules = [ 
-        ./modules/darwin
-        home-manager.darwinModules.home-manager {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.${user} = import ./modules/home-manager;
-          };
-        }
-        nix-homebrew.darwinModules.nix-homebrew {
-          nix-homebrew = {
-            enable = true;
-            user = user;
-          };
-        }
-      ];
+  outputs =
+    {
+      self,
+      nix-darwin,
+      nixpkgs,
+      home-manager,
+      nix-homebrew,
+      mac-app-util,
+    }:
+    let
+      hostname = "Choon-Keats-MacBook-Air";
+      user = "choonkeatling";
+    in
+    {
+      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self user; };
+        modules = [
+          ./modules/darwin
+          mac-app-util.darwinModules.default
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user}.imports = [
+                ./modules/home-manager
+                mac-app-util.homeManagerModules.default
+              ];
+            };
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = user;
+            };
+          }
+        ];
+      };
     };
-  };
 }

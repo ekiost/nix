@@ -1,4 +1,10 @@
-{ pkgs, self, user, ... }: {
+{
+  pkgs,
+  self,
+  user,
+  ...
+}:
+{
   nix.settings.experimental-features = "nix-command flakes";
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -82,15 +88,15 @@
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
         "/Applications/Safari.app"
-        "/Applications/Telegram.app"
-        "/Applications/Discord.app"
+        "/Users/${user}/Applications/Home Manager Apps/Telegram.app"
+        "/Users/${user}/Applications/Home Manager Apps/Discord.app"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
         "/System/Applications/Reminders.app"
         "/System/Applications/Notes.app"
-        "/Applications/Visual Studio Code.app"
+        "/Users/${user}/Applications/Home Manager Apps/Zed.app"
         "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/Music.app"
         "/System/Applications/System Settings.app"
@@ -102,10 +108,7 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
-      "discord"
-      "scroll-reverser"
-      "telegram"
-      "visual-studio-code"
+      "steam"
     ];
   };
 }
