@@ -65,6 +65,10 @@
       preferredStreamPlaybackAudioQuality = 15;
       preferredDolbyAtmosPlaySetting = 30;
     };
+
+    "com.caldis.Mos" = {
+      "hideStatusItem" = 1;
+    };
   };
 
   system.defaults = {
