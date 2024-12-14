@@ -48,6 +48,8 @@
       };
     };
 
+    git-credential-oauth.enable = true;
+
     direnv = {
       enable = true;
     };
