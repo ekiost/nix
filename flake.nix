@@ -14,8 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
     mac-app-util.url = "github:hraban/mac-app-util";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
@@ -27,7 +25,6 @@
       nix-darwin,
       nixpkgs,
       home-manager,
-      nix-homebrew,
       mac-app-util,
       determinate,
     }:
@@ -50,13 +47,6 @@
                 ./modules/home-manager
                 mac-app-util.homeManagerModules.default
               ];
-            };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              user = user;
             };
           }
           determinate.darwinModules.default
