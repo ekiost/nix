@@ -107,12 +107,4 @@
       ];
     };
   };
-
-  homebrew = {
-    enable = true;
-    onActivation.cleanup = "zap";
-    casks = [
-      "steam"
-    ];
-  };
 }
