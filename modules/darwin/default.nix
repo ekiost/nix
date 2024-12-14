@@ -92,7 +92,6 @@
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
         "/Applications/Safari.app"
-        "/Users/${user}/Applications/Home Manager Apps/Telegram.app"
         "/Users/${user}/Applications/Home Manager Apps/Discord.app"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"

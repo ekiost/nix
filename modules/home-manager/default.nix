@@ -13,7 +13,6 @@
     nixd
     nixfmt-rfc-style
     speedtest-cli
-    telegram-desktop
     tree
   ];
 
