@@ -67,6 +67,7 @@
     };
 
     "com.caldis.Mos" = {
+      "NSStatusItem Visible Item-0" = 0;
       "hideStatusItem" = 1;
     };
   };
@@ -91,15 +92,15 @@
         "/System/Applications/Launchpad.app"
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
-        "/Applications/Safari.app"
-        "/Users/${user}/Applications/Home Manager Apps/Discord.app"
+        "${pkgs.discord}/Applications/Discord.app/"
+        "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
         "/System/Applications/Reminders.app"
         "/System/Applications/Notes.app"
-        "/Users/${user}/Applications/Home Manager Apps/Zed.app"
+        "${pkgs.zed-editor}/Applications/Zed.app/"
         "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/Music.app"
         "/System/Applications/System Settings.app"

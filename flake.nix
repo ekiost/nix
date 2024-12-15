@@ -15,6 +15,8 @@
     };
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -24,6 +26,7 @@
       nixpkgs,
       home-manager,
       determinate,
+      mac-app-util,
     }:
     let
       hostname = "Choon-Keats-MacBook-Air";
@@ -41,6 +44,7 @@
               useUserPackages = true;
               users.${user}.imports = [
                 ./modules/home-manager
+                mac-app-util.homeManagerModules.default
               ];
             };
           }
