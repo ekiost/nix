@@ -13,6 +13,7 @@
     nixd
     nixfmt-rfc-style
     speedtest-cli
+    tldr
     tree
   ];
 
