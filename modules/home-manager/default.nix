@@ -9,6 +9,7 @@
     docker
     fastfetch
     mos
+    nchat
     nil
     nixd
     nixfmt-rfc-style
