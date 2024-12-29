@@ -66,9 +66,9 @@
       preferredDolbyAtmosPlaySetting = 30;
     };
 
-    "com.caldis.Mos" = {
-      "NSStatusItem Visible Item-0" = 0;
-      "hideStatusItem" = 1;
+    "com.theron.UnnaturalScrollWheels" = {
+      LaunchAtLogin = 1;
+      ShowMenuBarIcon = 0;
     };
   };
 

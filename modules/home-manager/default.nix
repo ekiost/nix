@@ -8,7 +8,6 @@
     discord
     docker
     fastfetch
-    mos
     nchat
     nil
     nixd
@@ -16,6 +15,7 @@
     speedtest-cli
     tldr
     tree
+    unnaturalscrollwheels
   ];
 
   programs = {
