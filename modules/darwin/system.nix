@@ -5,17 +5,7 @@
   ...
 }:
 {
-  nix = {
-    settings.experimental-features = "nix-command flakes";
-    optimise = {
-      automatic = true;
-      dates = "weekly";
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-  };
+  nix.enable = false; # Disable Nix daemon, since is handle by Determinate
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
 

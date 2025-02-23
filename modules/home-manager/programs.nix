@@ -8,7 +8,7 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         config-switch = "darwin-rebuild switch --flake ~/.config/nix";
-        config-update = "nix flake update";
+        config-update = "nix flake update --flake ~/.config/nix";
       };
     };
 
