@@ -7,6 +7,7 @@
     fastfetch
     fzf
     htop
+    httpie
     nixd
     nixfmt-rfc-style
     nvtopPackages.apple
