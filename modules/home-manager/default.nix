@@ -5,17 +5,17 @@
   home.packages = with pkgs; [
     colima
     coreutils
-    discord
     docker
     fastfetch
-    nchat
-    nil
+    fzf
+    htop
     nixd
     nixfmt-rfc-style
+    nvtopPackages.apple
     speedtest-cli
     tldr
     tree
-    unnaturalscrollwheels
+    wget
   ];
 
   programs = {
@@ -26,6 +26,7 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         config-switch = "darwin-rebuild switch --flake ~/.config/nix";
+        config-update = "nix flake update";
       };
     };
 
@@ -42,6 +43,7 @@
         ".DS_Store"
         ".vscode"
         ".idea"
+        ".env*"
       ];
       extraConfig = {
         init.defaultBranch = "main";
@@ -53,40 +55,8 @@
 
     direnv = {
       enable = true;
-    };
-
-    zed-editor = {
-      enable = true;
-      extensions = [ "nix" ];
-      userSettings = {
-        assistant = {
-          default_model = {
-            provider = "zed.dev";
-            model = "claude-3-5-sonnet-latest";
-          };
-          version = "2";
-        };
-        base_keymap = "VSCode";
-        ui_font_size = 16;
-        buffer_font_size = 16;
-        theme = {
-          mode = "system";
-          light = "One Light";
-          dark = "Tokyo Night";
-        };
-        terminal = {
-          font_family = "MesloLGL Nerd Font";
-        };
-        lsp = {
-          nil = {
-            settings = {
-              formatting = {
-                command = [ "nixfmt" ];
-              };
-            };
-          };
-        };
-      };
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
     };
   };
 }

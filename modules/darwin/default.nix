@@ -5,7 +5,17 @@
   ...
 }:
 {
-  nix.settings.experimental-features = "nix-command flakes";
+  nix = {
+    settings.experimental-features = "nix-command flakes";
+    optimise = {
+      automatic = true;
+      dates = "weekly";
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+  };
 
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -92,7 +102,8 @@
         "/System/Applications/Launchpad.app"
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
-        "${pkgs.discord}/Applications/Discord.app/"
+        "/Applications/Discord.app"
+        "/Applications/Telegram.app"
         "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"
@@ -100,11 +111,29 @@
         "/System/Applications/Photos.app"
         "/System/Applications/Reminders.app"
         "/System/Applications/Notes.app"
-        "${pkgs.zed-editor}/Applications/Zed.app/"
+        "/Applications/Visual Studio Code.app"
         "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/Music.app"
         "/System/Applications/System Settings.app"
       ];
     };
+  };
+
+  homebrew = {
+    enable = true;
+    casks = [
+      "discord"
+      "microsoft-excel"
+      "microsoft-powerpoint"
+      "microsoft-word"
+      "steam"
+      "telegram"
+      "unnaturalscrollwheels"
+      "visual-studio-code"
+      "zoom"
+      "google-chrome"
+      "vnc-viewer"
+    ];
+    onActivation.cleanup = "zap";
   };
 }

@@ -14,9 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-
-    mac-app-util.url = "github:hraban/mac-app-util";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs =
@@ -25,8 +23,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
-      determinate,
-      mac-app-util,
+      nix-homebrew,
     }:
     let
       hostname = "Choon-Keats-MacBook-Air";
@@ -44,11 +41,16 @@
               useUserPackages = true;
               users.${user}.imports = [
                 ./modules/home-manager
-                mac-app-util.homeManagerModules.default
               ];
             };
           }
-          determinate.darwinModules.default
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = user;
+            };
+          }
         ];
       };
     };
