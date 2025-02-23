@@ -73,7 +73,6 @@
         "/System/Applications/Maps.app"
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
-        "/System/Applications/Reminders.app"
         "/System/Applications/Notes.app"
         "/Applications/Visual Studio Code.app"
         "/System/Applications/Utilities/Terminal.app"
