@@ -40,9 +40,9 @@
       preferredDolbyAtmosPlaySetting = 30;
     };
 
-    "com.theron.UnnaturalScrollWheels" = {
-      LaunchAtLogin = 1;
-      ShowMenuBarIcon = 0;
+    "com.caldis.Mos" = {
+      "NSStatusItem Visible Item-0" = 0;
+      hideStatusItem = true;
     };
   };
 
