@@ -14,7 +14,7 @@
 
     oh-my-posh = {
       enable = true;
-      useTheme = "tokyonight_storm";
+      settings = builtins.fromJSON (builtins.readFile ./oh-my-posh.json);
     };
 
     git = {
