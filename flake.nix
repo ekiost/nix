@@ -31,7 +31,7 @@
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self user; };
+        specialArgs = { inherit self user nixpkgs; };
         modules = [
           ./modules/darwin
           home-manager.darwinModules.home-manager
