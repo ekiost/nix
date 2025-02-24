@@ -52,7 +52,7 @@
                         "threshold": 0
                     },
                     "style": "plain",
-                    "template": " \uf520 {{ .FormattedMs }}s ",
+                    "template": " \uf520 {{ .FormattedMs }}s",
                     "type": "executiontime"
                 },
                 {
