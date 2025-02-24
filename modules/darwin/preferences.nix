@@ -9,11 +9,6 @@
     "com.apple.Safari" = {
       AlwaysShowTabBar = true;
       ShowStatusBar = true;
-      IncludeDevelopMenu = true;
-    };
-
-    "com.apple.Safari.SandboxBroker" = {
-      ShowDevelopMenu = true;
     };
 
     "com.apple.dock" = {
