@@ -1,51 +1,51 @@
 { ... }:
 {
-  system.defaults.CustomUserPreferences = {
-    "com.apple.finder" = {
-      "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" = true;
-      NewWindowTarget = "PfHm";
-    };
-
-    "com.apple.Safari" = {
-      AlwaysShowTabBar = true;
-      ShowStatusBar = true;
-    };
-
-    "com.apple.dock" = {
-      expose-group-apps = true;
-    };
-
-    "com.apple.controlcenter" = {
-      BatteryShowPercentage = true;
-    };
-
-    "com.apple.Terminal" = {
-      NSWindowTabbingShoudShowTabBarKey-TTWindow-TTWindowController-TTWindowController-VT-FS = true;
-    };
-
-    "com.apple.HIToolbox" = {
-      AppleFnUsageType = 2;
-    };
-
-    "com.apple.Music" = {
-      userWantsPlaybackNotifications = false;
-      losslessEnabled = true;
-      preferredDownloadAudioQuality = 15;
-      preferredStreamPlaybackAudioQuality = 15;
-      preferredDolbyAtmosPlaySetting = 30;
-    };
-
-    "com.caldis.Mos" = {
-      "NSStatusItem Visible Item-0" = 0;
-      hideStatusItem = true;
-    };
-  };
-
   system.defaults = {
+    CustomUserPreferences = {
+      "com.apple.finder" = {
+        "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" = true;
+      };
+
+      "com.apple.Safari" = {
+        AlwaysShowTabBar = true;
+        ShowStatusBar = true;
+      };
+
+      "com.apple.dock" = {
+        expose-group-apps = true;
+      };
+
+      "com.apple.controlcenter" = {
+        BatteryShowPercentage = true;
+      };
+
+      "com.apple.Terminal" = {
+        NSWindowTabbingShoudShowTabBarKey-TTWindow-TTWindowController-TTWindowController-VT-FS = true;
+      };
+
+      "com.apple.HIToolbox" = {
+        AppleFnUsageType = 2;
+      };
+
+      "com.apple.Music" = {
+        userWantsPlaybackNotifications = false;
+        losslessEnabled = true;
+        preferredDownloadAudioQuality = 15;
+        preferredStreamPlaybackAudioQuality = 15;
+        preferredDolbyAtmosPlaySetting = 30;
+      };
+
+      "com.caldis.Mos" = {
+        "NSStatusItem Visible Item-0" = 0;
+        hideStatusItem = true;
+      };
+    };
+
     finder = {
       FXPreferredViewStyle = "clmv";
       ShowPathbar = true;
       ShowStatusBar = true;
+      NewWindowTarget = "Home";
     };
 
     dock = {
@@ -69,11 +69,16 @@
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
         "/System/Applications/Notes.app"
-        "/Applications/Visual Studio Code.app"
+        "/Applications/Zed.app"
         "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/Music.app"
         "/System/Applications/System Settings.app"
       ];
+    };
+
+    screencapture = {
+      disable-shadow = true;
+      include-date = true;
     };
   };
 }

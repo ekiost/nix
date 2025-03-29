@@ -19,6 +19,7 @@
 
     git = {
       enable = true;
+      lfs.enable = true;
       userName = "ekiost";
       userEmail = "choonkeatling@icloud.com";
       ignores = [
@@ -30,6 +31,7 @@
       extraConfig = {
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
+        core.autocrlf = "input";
       };
     };
 

@@ -24,5 +24,5 @@
 
   fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 }

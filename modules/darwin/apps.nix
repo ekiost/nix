@@ -7,8 +7,7 @@
       "mos"
       "steam"
       "telegram"
-      "visual-studio-code"
-      "zoom"
+      "zed"
     ];
     onActivation.cleanup = "zap";
   };
