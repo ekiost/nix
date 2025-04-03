@@ -12,6 +12,10 @@ let
     terminal = {
       font_family = "MesloLGL Nerd Font";
     };
+    edit_predictions = {
+      mode = "subtle";
+    };
+    load_direnv = "shell_hook";
   };
 in
 {
