@@ -27,7 +27,7 @@
     }:
     let
       hostname = "Choon-Keats-MacBook-Air";
-      user = "choonkeatling";
+      user = "ekiost";
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
