@@ -5,7 +5,6 @@
     casks = [
       "discord"
       "mos"
-      "steam"
       "telegram"
       "zed"
     ];
