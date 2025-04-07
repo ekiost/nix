@@ -5,6 +5,5 @@
   imports = [
     ./packages.nix
     ./programs.nix
-    ./zed.nix
   ];
 }
