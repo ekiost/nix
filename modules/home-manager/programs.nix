@@ -7,7 +7,7 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
-        config-switch = "darwin-rebuild switch --flake ~/.config/nix";
+        config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix";
         config-update = "nix flake update --flake ~/.config/nix";
       };
     };

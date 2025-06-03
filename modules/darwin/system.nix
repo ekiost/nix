@@ -11,6 +11,8 @@
 
   system.stateVersion = 5;
 
+  system.primaryUser = user;
+
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.${user}.home = "/Users/${user}";

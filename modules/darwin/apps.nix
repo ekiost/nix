@@ -4,9 +4,9 @@
     enable = true;
     casks = [
       "discord"
-      "fleet"
       "mos"
       "telegram"
+      "zed"
     ];
     onActivation.cleanup = "zap";
   };

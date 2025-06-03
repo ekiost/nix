@@ -24,6 +24,7 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
+      ...
     }:
     let
       hostname = "Choon-Keats-MacBook-Air";
@@ -31,7 +32,13 @@
     in
     {
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self user nixpkgs; };
+        specialArgs = {
+          inherit
+            self
+            user
+            nixpkgs
+            ;
+        };
         modules = [
           ./modules/darwin
           home-manager.darwinModules.home-manager
