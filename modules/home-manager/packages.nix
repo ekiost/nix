@@ -2,8 +2,6 @@
 {
   home.packages = with pkgs; [
     btop
-    colima
-    docker
     fastfetch
     fzf
     nixd

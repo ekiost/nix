@@ -69,7 +69,7 @@
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
         "/System/Applications/Notes.app"
-        "/Applications/Fleet.app"
+        "/Applications/Zed.app"
         "/System/Applications/Music.app"
         "/System/Applications/System Settings.app"
       ];
