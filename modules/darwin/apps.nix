@@ -6,6 +6,8 @@
       "discord"
       "mos"
       "telegram"
+      "microsoft-word"
+      "zoom"
       "zed"
     ];
     onActivation.cleanup = "zap";

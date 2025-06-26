@@ -1,15 +1,17 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs = {
     zsh = {
       enable = true;
-      oh-my-zsh.enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
         config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix";
         config-update = "nix flake update --flake ~/.config/nix";
       };
+      initContent = ''
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      '';
     };
 
     oh-my-posh = {
@@ -41,6 +43,7 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+      silent = true;
     };
   };
 }

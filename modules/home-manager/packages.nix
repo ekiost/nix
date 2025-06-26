@@ -10,5 +10,6 @@
     tldr
     tree
     wget
+    devenv
   ];
 }
