@@ -1,86 +1,84 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "palette": {
-        "main-bg": "#24283b",
-        "terminal-red": "#f7768e",
-        "pistachio-green": "#9ece6a",
-        "terminal-green": "#73daca",
-        "terminal-yellow": "#e0af68",
-        "terminal-blue": "#7aa2f7",
-        "celeste-blue": "#b4f9f8",
-        "light-sky-blue": "#7dcfff",
-        "terminal-white": "#c0caf5",
-        "white-blue": "#a9b1d6",
-        "blue-bell": "#9aa5ce",
-        "pastal-grey": "#cfc9c2",
-        "terminal-magenta": "#bb9af7",
-        "blue-black": "#565f89",
-        "terminal-black": "#414868",
-        "t-background": "p:main-bg"
-    },
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "main-bg": "#24283b",
+    "terminal-red": "#f7768e",
+    "pistachio-green": "#9ece6a",
+    "terminal-green": "#73daca",
+    "terminal-yellow": "#e0af68",
+    "terminal-blue": "#7aa2f7",
+    "celeste-blue": "#b4f9f8",
+    "light-sky-blue": "#7dcfff",
+    "terminal-white": "#c0caf5",
+    "white-blue": "#a9b1d6",
+    "blue-bell": "#9aa5ce",
+    "pastal-grey": "#cfc9c2",
+    "terminal-magenta": "#bb9af7",
+    "blue-black": "#565f89",
+    "terminal-black": "#414868",
+    "t-background": "p:main-bg"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
         {
-            "alignment": "left",
-            "segments": [
-                {
-                    "type": "os",
-                    "style": "plain",
-                    "background": "transparent",
-                    "foreground": "p:terminal-blue",
-                    "template": "{{ .Icon }} <#ffffff>on</>"
-                },
-                {
-                    "type": "path",
-                    "style": "plain",
-                    "foreground": "p:terminal-magenta",
-                    "properties": {
-                        "home_icon": "home",
-                        "style": "agnoster_short"
-                    },
-                    "template": " {{ .Path }} \u279c "
-                }
-            ],
-            "type": "prompt"
+          "type": "os",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "p:terminal-blue",
+          "template": "{{ .Icon }} <#ffffff>on</>"
         },
         {
-            "alignment": "right",
-            "segments": [
-                {
-                    "foreground": "p:terminal-red",
-                    "properties": {
-                        "style": "dallas",
-                        "threshold": 0
-                    },
-                    "style": "plain",
-                    "template": " \uf520 {{ .FormattedMs }}s",
-                    "type": "executiontime"
-                },
-                {
-                    "foreground": "p:light-sky-blue",
-                    "properties": {
-                        "branch_icon": "\ue725 ",
-                        "fetch_stash_count": true,
-                        "fetch_status": true,
-                        "fetch_upstream_icon": true,
-                        "fetch_worktree_count": true
-                    },
-                    "style": "plain",
-                    "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-                    "type": "git"
-                }
-            ],
-            "type": "rprompt"
+          "type": "path",
+          "style": "plain",
+          "foreground": "p:terminal-magenta",
+          "options": {
+            "home_icon": "home",
+            "style": "agnoster_short"
+          },
+          "template": " {{ .Path }} \u279c "
         }
-    ],
-    "secondary_prompt": {
-        "background": "transparent",
-        "foreground": "p:terminal-blue",
-        "template": "\udb85\udfa9 "
+      ],
+      "type": "prompt"
     },
-    "transient_prompt": {
-        "background": "transparent",
-        "foreground": "p:terminal-blue",
-        "template": "\u279c "
-    },
-    "terminal_background": "p:t-background"
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "p:terminal-red",
+          "options": {
+            "style": "dallas",
+            "threshold": 0
+          },
+          "style": "plain",
+          "template": " \uf520 {{ .FormattedMs }}s",
+          "type": "executiontime"
+        },
+        {
+          "foreground": "p:light-sky-blue",
+          "options": {
+            "branch_icon": "\ue725 ",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "plain",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        }
+      ],
+      "type": "rprompt"
+    }
+  ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:terminal-blue",
+    "template": "\udb85\udfa9 "
+  },
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:terminal-blue",
+    "template": "\u279c "
+  },
+  "terminal_background": "p:t-background"
 }

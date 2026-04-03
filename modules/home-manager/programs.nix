@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.file.".config/zed/settings.json".source = ./zed.json;
+  home.file.".config/zed/themes/MacOS Classic.json".source = ./macos-classic.json;
 
   programs = {
     zsh = {
