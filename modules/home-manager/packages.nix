@@ -1,15 +1,16 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    btop
     fastfetch
     fzf
     nixd
-    nixfmt-rfc-style
+    nil
+    nixfmt
     speedtest-cli
     tldr
     tree
     wget
-    devenv
+    colima
+    docker
   ];
 }

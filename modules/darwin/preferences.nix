@@ -34,18 +34,15 @@
         preferredStreamPlaybackAudioQuality = 15;
         preferredDolbyAtmosPlaySetting = 30;
       };
-
-      "com.caldis.Mos" = {
-        "NSStatusItem Visible Item-0" = 0;
-        hideStatusItem = true;
-      };
     };
 
     finder = {
-      FXPreferredViewStyle = "clmv";
+      FXPreferredViewStyle = "Nlsv";
       ShowPathbar = true;
       ShowStatusBar = true;
       NewWindowTarget = "Home";
+      FXDefaultSearchScope = "SCcf";
+      _FXSortFoldersFirst = true;
     };
 
     dock = {
@@ -58,7 +55,7 @@
       wvous-tl-corner = 1;
       wvous-tr-corner = 1;
       persistent-apps = [
-        "/System/Applications/Launchpad.app"
+        "/System/Applications/Apps.app"
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
         "/Applications/Discord.app"
@@ -69,8 +66,9 @@
         "/System/Applications/Calendar.app"
         "/System/Applications/Photos.app"
         "/System/Applications/Notes.app"
-        "/Applications/Zed.app"
         "/System/Applications/Music.app"
+        "/Applications/Zed.app"
+        "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/System Settings.app"
       ];
     };
@@ -79,5 +77,10 @@
       disable-shadow = true;
       include-date = true;
     };
+  };
+
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    watchIdAuth = true;
   };
 }

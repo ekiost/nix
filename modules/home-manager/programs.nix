@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  home.file.".config/zed/settings.json".source = ./zed.json;
+
   programs = {
     zsh = {
       enable = true;
@@ -22,15 +24,15 @@
     git = {
       enable = true;
       lfs.enable = true;
-      userName = "ekiost";
-      userEmail = "choonkeatling@icloud.com";
       ignores = [
         ".DS_Store"
         ".vscode"
         ".idea"
         ".env*"
       ];
-      extraConfig = {
+      settings = {
+        user.name = "ekiost";
+        user.email = "choonkeatling@icloud.com";
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
         core.autocrlf = "input";
