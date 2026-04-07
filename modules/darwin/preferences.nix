@@ -71,6 +71,9 @@
         "/System/Applications/Utilities/Terminal.app"
         "/System/Applications/System Settings.app"
       ];
+      persistent-others = [
+        "/Users/ekiost/Downloads"
+      ];
     };
 
     screencapture = {
