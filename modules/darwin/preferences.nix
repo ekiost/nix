@@ -58,8 +58,6 @@
         "/System/Applications/Apps.app"
         "/System/Applications/Messages.app"
         "/System/Applications/FaceTime.app"
-        "/Applications/Discord.app"
-        "/Applications/Telegram.app"
         "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/"
         "/System/Applications/Mail.app"
         "/System/Applications/Maps.app"
