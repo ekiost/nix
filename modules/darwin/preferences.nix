@@ -68,9 +68,10 @@
           "/System/Applications/Maps.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/Photos.app"
+          "/Applications/Photomator.app"
           "/System/Applications/Notes.app"
           "/System/Applications/Music.app"
-          "/Applications/Zed.app"
+          "/Applications/Visual Studio Code.app"
           "/System/Applications/Utilities/Terminal.app"
           "/System/Applications/System Settings.app"
         ];
@@ -88,8 +89,8 @@
     activationScripts.postActivation.text = ''
       echo "Configuring macOS Terminal profile..."
 
-      PROFILE_NAME="Clear Dark Meslo"
-      PROFILE_PATH="/Users/${user}/.config/nix/modules/darwin/Clear Dark Meslo.terminal"
+      PROFILE_NAME="Clear Dark JetBrains Mono"
+      PROFILE_PATH="/Users/${user}/.config/nix/modules/darwin/Clear Dark JetBrains Mono.terminal"
       CHANGES_MADE=0
 
       # 1. Check if the profile exists, import if it doesn't

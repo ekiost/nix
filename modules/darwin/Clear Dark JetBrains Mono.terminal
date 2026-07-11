@@ -171,10 +171,10 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGkCwwVFlUkbnVsbNQNDg8QERIT
-	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QEk1l
-	c2xvTEdMTkYtUmVndWxhctIXGBkaWiRjbGFzc25hbWVYJGNsYXNzZXNWTlNGb250ohkb
-	WE5TT2JqZWN0CBEaJCkyN0lMUVNYXmdud36FjpCSlKmuucLJzAAAAAAAAAEBAAAAAAAA
-	ABwAAAAAAAAAAAAAAAAAAADV
+	FFZOU1NpemVYTlNmRmxhZ3NWTlNOYW1lViRjbGFzcyNAKAAAAAAAABAQgAKAA18QF0pl
+	dEJyYWluc01vbm9ORi1SZWd1bGFy0hcYGRpaJGNsYXNzbmFtZVgkY2xhc3Nlc1ZOU0Zv
+	bnSiGRtYTlNPYmplY3QIERokKTI3SUxRU1heZ253foWOkJKUrrO+x87RAAAAAAAAAQEA
+	AAAAAAAAHAAAAAAAAAAAAAAAAAAAANo=
 	</data>
 	<key>FontAntialias</key>
 	<true/>
@@ -214,7 +214,7 @@
 	<key>columnCount</key>
 	<integer>120</integer>
 	<key>name</key>
-	<string>Clear Dark Meslo</string>
+	<string>Clear Dark JetBrains Mono</string>
 	<key>rowCount</key>
 	<integer>30</integer>
 	<key>type</key>

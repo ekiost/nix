@@ -1,25 +1,23 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  home.file.".config/zed/settings.json".source = ./zed.json;
-  home.file.".config/zed/themes/MacOS Classic.json".source = ./macos-classic.json;
 
   programs = {
-    zsh = {
+    fish = {
       enable = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+      interactiveShellInit = ''
+        set -g fish_greeting # Disable greeting
+      '';
       shellAliases = {
         config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix";
         config-update = "nix flake update --flake ~/.config/nix";
       };
-      initContent = ''
-        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      '';
     };
 
-    oh-my-posh = {
+    starship = {
       enable = true;
-      settings = builtins.fromJSON (builtins.readFile ./oh-my-posh.json);
+      enableFishIntegration = true;
+      enableTransience = true;
+      presets = [ "nerd-font-symbols" ];
     };
 
     git = {
@@ -44,7 +42,7 @@
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
       nix-direnv.enable = true;
       silent = true;
     };

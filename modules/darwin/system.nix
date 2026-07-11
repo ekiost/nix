@@ -15,7 +15,14 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  users.users.${user}.home = "/Users/${user}";
+  users.knownUsers = [ user ];
+  users.users.${user} = {
+    uid = 501;
+    home = "/Users/${user}";
+    shell = pkgs.fish;
+  };
+
+  programs.fish.enable = true;
 
   nixpkgs = {
     config = {
@@ -24,5 +31,5 @@
     };
   };
 
-  fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 }

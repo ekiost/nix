@@ -3,7 +3,7 @@
   homebrew = {
     enable = true;
     casks = [
-      "zed"
+      "visual-studio-code"
     ];
     onActivation.cleanup = "zap";
   };
