@@ -6,7 +6,6 @@
     nixfmt
     tree
     wget
-    colima
     docker
   ];
 }
