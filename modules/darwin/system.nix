@@ -5,15 +5,23 @@
   ...
 }:
 {
-  nix.enable = false; # Disable Nix daemon, since is handle by Determinate
+  nix.enable = false; # Disable Nix daemon, since it's handled by Determinate
 
-  system.configurationRevision = self.rev or self.dirtyRev or null;
+  system = {
+    configurationRevision = self.rev or self.dirtyRev or null;
+    stateVersion = 5;
+    primaryUser = user;
+  };
 
-  system.stateVersion = 5;
+  nixpkgs = {
+    hostPlatform = "aarch64-darwin";
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
-  system.primaryUser = user;
-
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  documentation.enable = false;
 
   users.knownUsers = [ user ];
   users.users.${user} = {
@@ -23,13 +31,6 @@
   };
 
   programs.fish.enable = true;
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
 
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 }

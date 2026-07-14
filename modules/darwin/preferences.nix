@@ -76,7 +76,7 @@
           "/System/Applications/System Settings.app"
         ];
         persistent-others = [
-          "/Users/ekiost/Downloads"
+          "/Users/${user}/Downloads"
         ];
       };
 
