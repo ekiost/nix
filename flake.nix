@@ -17,6 +17,12 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
     xremap-flake.url = "github:xremap/nix-flake";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -27,6 +33,7 @@
       home-manager,
       nix-homebrew,
       xremap-flake,
+      plasma-manager,
       ...
     }:
     let
@@ -46,8 +53,10 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${user}.imports = [
+                plasma-manager.homeModules.plasma-manager
                 ./modules/home
                 ./modules/home/nixos.nix
+                ./modules/home/plasma.nix
               ];
             };
           }
