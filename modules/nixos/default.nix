@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./gaming.nix
+    ./xremap.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

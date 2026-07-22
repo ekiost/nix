@@ -15,6 +15,8 @@
     };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs =
@@ -24,6 +26,7 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
+      xremap-flake,
       ...
     }:
     let
@@ -35,6 +38,7 @@
       nixosConfigurations.${nixosHostname} = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit self user nixpkgs; };
         modules = [
+          xremap-flake.nixosModules.default
           ./modules/nixos
           home-manager.nixosModules.home-manager
           {
