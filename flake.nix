@@ -2,7 +2,7 @@
   description = "My Nix configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
@@ -27,18 +27,31 @@
       ...
     }:
     let
-      hostname = "Choon-Keats-MacBook-Air";
+      darwinHostname = "Choon-Keats-MacBook-Air";
+      nixosHostname = "nixos";
       user = "ekiost";
     in
     {
-      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit
-            self
-            user
-            nixpkgs
-            ;
-        };
+      nixosConfigurations.${nixosHostname} = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit self user nixpkgs; };
+        modules = [
+          ./modules/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user}.imports = [
+                ./modules/home
+                ./modules/home/nixos.nix
+              ];
+            };
+          }
+        ];
+      };
+
+      darwinConfigurations.${darwinHostname} = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self user nixpkgs; };
         modules = [
           ./modules/darwin
           home-manager.darwinModules.home-manager
@@ -47,7 +60,8 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${user}.imports = [
-                ./modules/home-manager
+                ./modules/home
+                ./modules/home/darwin.nix
               ];
             };
           }

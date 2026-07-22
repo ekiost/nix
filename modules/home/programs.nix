@@ -7,7 +7,6 @@
         set -g fish_greeting # Disable greeting
       '';
       shellAliases = {
-        config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix";
         config-update = "nix flake update --flake ~/.config/nix";
       };
     };
@@ -38,12 +37,5 @@
     };
 
     git-credential-oauth.enable = true;
-
-    direnv = {
-      enable = true;
-      enableFishIntegration = true;
-      nix-direnv.enable = true;
-      silent = true;
-    };
   };
 }
