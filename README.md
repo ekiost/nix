@@ -2,20 +2,46 @@
 
 ## First Time Setup
 
-1. Prerequisites
+### macOS (Choon-Keats-MacBook-Air)
+
+1. Install prerequisites
 ```bash
 xcode-select --install
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
 ```
 
-2. Apply config
+2. Clone config
 ```bash
-nix run nix-darwin -- switch --flake ~/.config/nix
+git clone https://github.com/ekiost/nix.git ~/.config/nix
 ```
 
-Note: If fails, give Terminal Full Disk Access in Security & Privacy settings
+3. Apply config
+```bash
+nix run nix-darwin -- switch --flake ~/.config/nix#Choon-Keats-MacBook-Air
+```
+
+> If it fails, give Terminal Full Disk Access in System Settings > Privacy & Security
+
+4. Reboot
+
+---
+
+### NixOS (Choon-Keats-NixOS)
+
+1. After installing NixOS, clone config
+```bash
+nix-shell -p git
+git clone https://github.com/ekiost/nix.git ~/.config/nix
+```
+
+2. Apply config
+```bash
+sudo nixos-rebuild switch --flake ~/.config/nix#Choon-Keats-NixOS
+```
 
 3. Reboot
+
+---
 
 ## Daily Use
 
@@ -29,7 +55,9 @@ Update flake inputs:
 config-update
 ```
 
-## Clean Slate (if needed)
+---
+
+## Clean Slate (macOS only)
 
 ```bash
 # Remove homebrew casks

@@ -28,7 +28,7 @@
     }:
     let
       darwinHostname = "Choon-Keats-MacBook-Air";
-      nixosHostname = "nixos";
+      nixosHostname = "Choon-Keats-NixOS";
       user = "ekiost";
     in
     {

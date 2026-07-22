@@ -5,7 +5,7 @@
   ];
 
   programs.fish.shellAliases = {
-    config-switch = "sudo nixos-rebuild switch --flake ~/.config/nix";
+    config-switch = "sudo nixos-rebuild switch --flake ~/.config/nix#Choon-Keats-NixOS";
   };
 
   programs.alacritty = {

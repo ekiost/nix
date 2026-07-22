@@ -8,7 +8,7 @@
 
   programs = {
     fish.shellAliases = {
-      config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix";
+      config-switch = "sudo darwin-rebuild switch --flake ~/.config/nix#Choon-Keats-MacBook-Air";
     };
 
     direnv = {
