@@ -7,51 +7,74 @@
     ./xremap.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 0;
+    };
+    kernelParams = [ "quiet" "splash" ];
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+  };
 
-  networking.hostName = "Choon-Keats-NixOS";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "Choon-Keats-NixOS";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Asia/Singapore";
 
-  i18n.defaultLocale = "en_SG.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_SG.UTF-8";
-    LC_IDENTIFICATION = "en_SG.UTF-8";
-    LC_MEASUREMENT = "en_SG.UTF-8";
-    LC_MONETARY = "en_SG.UTF-8";
-    LC_NAME = "en_SG.UTF-8";
-    LC_NUMERIC = "en_SG.UTF-8";
-    LC_PAPER = "en_SG.UTF-8";
-    LC_TELEPHONE = "en_SG.UTF-8";
-    LC_TIME = "en_SG.UTF-8";
+  i18n = {
+    defaultLocale = "en_SG.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_SG.UTF-8";
+      LC_IDENTIFICATION = "en_SG.UTF-8";
+      LC_MEASUREMENT = "en_SG.UTF-8";
+      LC_MONETARY = "en_SG.UTF-8";
+      LC_NAME = "en_SG.UTF-8";
+      LC_NUMERIC = "en_SG.UTF-8";
+      LC_PAPER = "en_SG.UTF-8";
+      LC_TELEPHONE = "en_SG.UTF-8";
+      LC_TIME = "en_SG.UTF-8";
+    };
   };
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = [ pkgs.kdePackages.konsole ];
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+
+  services = {
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+    printing.enable = true;
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+    };
   };
 
-  services.printing.enable = true;
-
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  hardware.bluetooth = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+    powerOnBoot = true;
   };
 
-  programs.fish.enable = true;
+  security.rtkit.enable = true;
+
+  programs = {
+    fish.enable = true;
+    firefox.enable = true;
+  };
 
   users.users.${user} = {
     isNormalUser = true;
@@ -62,8 +85,6 @@
       kdePackages.kate
     ];
   };
-
-  programs.firefox.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
