@@ -112,11 +112,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1785104993,
-        "narHash": "sha256-eKbrvPoAOFutbYMdbB3r5EQVmFxKv24iKqHPPUXA0gM=",
+        "lastModified": 1785133411,
+        "narHash": "sha256-Yjv0WEg39KRYS0rBdTbu6Fc/or/ihAKk13W9sQ6VWd0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8623c4c20aa4ca2f5fb81510d2944066c3fb0d96",
+        "rev": "2f5a153c270b70cb0f8c11f46d96d6d3bc39f4e3",
         "type": "github"
       },
       "original": {
@@ -157,6 +157,22 @@
         "type": "github"
       }
     },
+    "nowplaying-cli-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775440969,
+        "narHash": "sha256-jPW3WEq1ZhxBojMO+5WF8ohO1rLmlAJKGdh1HfSOR5s=",
+        "owner": "kirtan-shah",
+        "repo": "nowplaying-cli",
+        "rev": "8c8c1fa4820681fd4bbd6a17ce0a5655e1f4ebe7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kirtan-shah",
+        "repo": "nowplaying-cli",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -186,6 +202,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "nowplaying-cli-src": "nowplaying-cli-src",
         "plasma-manager": "plasma-manager",
         "xremap-flake": "xremap-flake"
       }

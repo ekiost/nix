@@ -16,6 +16,11 @@
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
+    nowplaying-cli-src = {
+      url = "github:kirtan-shah/nowplaying-cli";
+      flake = false;
+    };
+
     xremap-flake.url = "github:xremap/nix-flake";
 
     plasma-manager = {
@@ -32,6 +37,7 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
+      nowplaying-cli-src,
       xremap-flake,
       plasma-manager,
       ...
@@ -72,6 +78,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = { inherit nowplaying-cli-src; };
               users.${user}.imports = [
                 ./modules/home
                 ./modules/home/darwin.nix

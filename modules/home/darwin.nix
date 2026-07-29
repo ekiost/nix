@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./prevent-sleep-on-audio.nix
+  ];
+
   home.packages = with pkgs; [
     nixd
     nixfmt
