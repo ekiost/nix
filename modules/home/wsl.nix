@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    nixd
-    nixfmt
-    go
-  ];
-
   programs = {
     fish = {
       enable = true;

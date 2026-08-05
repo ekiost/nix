@@ -5,8 +5,6 @@
   ];
 
   home.packages = with pkgs; [
-    nixd
-    nixfmt
     docker
   ];
 
@@ -20,10 +18,6 @@
       enableFishIntegration = true;
       nix-direnv.enable = true;
       silent = true;
-    };
-    
-    starship = {
-      presets = [ "nerd-font-symbols" ];
     };
 
     git = {
