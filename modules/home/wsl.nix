@@ -1,5 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    nixd
+    nixfmt
+    go
+  ];
+
   programs = {
     fish = {
       enable = true;
@@ -8,6 +14,7 @@
       '';
       shellAliases = {
         config-update = "nix flake update --flake ~/.config/nix";
+        config-switch = "sudo nixos-rebuild switch --flake ~/.config/nix#nixos";
       };
     };
 
@@ -18,21 +25,10 @@
     };
 
     git = {
-      enable = true;
-      lfs.enable = true;
-      ignores = [
-        ".DS_Store"
-        ".vscode"
-        ".idea"
-        ".env*"
-      ];
       settings = {
-        init.defaultBranch = "main";
-        push.autoSetupRemote = true;
-        core.autocrlf = "input";
+        user.name = "testkiost";
+        user.email = "slatted.uphill4d@icloud.com";
       };
     };
-
-    git-credential-oauth.enable = true;
   };
 }

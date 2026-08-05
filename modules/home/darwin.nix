@@ -21,6 +21,17 @@
       nix-direnv.enable = true;
       silent = true;
     };
+    
+    starship = {
+      presets = [ "nerd-font-symbols" ];
+    };
+
+    git = {
+      settings = {
+        user.name = "ekiost";
+        user.email = "choonkeatling@icloud.com";
+      };
+    };
   };
 
   services.colima = {

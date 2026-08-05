@@ -28,6 +28,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -40,11 +42,13 @@
       nowplaying-cli-src,
       xremap-flake,
       plasma-manager,
+      nixos-wsl,
       ...
     }:
     let
       darwinHostname = "Choon-Keats-MacBook-Air";
       nixosHostname = "Choon-Keats-NixOS";
+      wslHostname = "nixos";
       user = "ekiost";
     in
     {
@@ -63,6 +67,26 @@
                 ./modules/home
                 ./modules/home/nixos.nix
                 ./modules/home/plasma.nix
+              ];
+            };
+          }
+        ];
+      };
+
+      nixosConfigurations.${wslHostname} = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit self user nixpkgs; };
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          ./modules/wsl
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user}.imports = [
+                ./modules/home
+                ./modules/home/wsl.nix
               ];
             };
           }
