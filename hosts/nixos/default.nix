@@ -1,4 +1,8 @@
-{ config, pkgs, user, ... }:
+{
+  pkgs,
+  user,
+  ...
+}:
 
 {
   imports = [
@@ -13,7 +17,10 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
-    kernelParams = [ "quiet" "splash" ];
+    kernelParams = [
+      "quiet"
+      "splash"
+    ];
     consoleLogLevel = 0;
     initrd.verbose = false;
   };
@@ -79,18 +86,20 @@
   users.users.${user} = {
     isNormalUser = true;
     description = user;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
       kdePackages.kate
     ];
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
   ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
 

@@ -27,6 +27,8 @@
         ".env*"
       ];
       settings = {
+        user.name = "ekiost";
+        user.email = "choonkeatling@icloud.com";
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
         core.autocrlf = "input";

@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./prevent-sleep-on-audio.nix
-  ];
-
   home.packages = with pkgs; [
     docker
   ];
@@ -18,13 +14,6 @@
       enableFishIntegration = true;
       nix-direnv.enable = true;
       silent = true;
-    };
-
-    git = {
-      settings = {
-        user.name = "ekiost";
-        user.email = "choonkeatling@icloud.com";
-      };
     };
   };
 

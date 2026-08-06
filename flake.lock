@@ -209,22 +209,6 @@
         "type": "github"
       }
     },
-    "nowplaying-cli-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775440969,
-        "narHash": "sha256-jPW3WEq1ZhxBojMO+5WF8ohO1rLmlAJKGdh1HfSOR5s=",
-        "owner": "kirtan-shah",
-        "repo": "nowplaying-cli",
-        "rev": "8c8c1fa4820681fd4bbd6a17ce0a5655e1f4ebe7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kirtan-shah",
-        "repo": "nowplaying-cli",
-        "type": "github"
-      }
-    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -255,7 +239,6 @@
         "nix-homebrew": "nix-homebrew",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "nowplaying-cli-src": "nowplaying-cli-src",
         "plasma-manager": "plasma-manager",
         "xremap-flake": "xremap-flake"
       }

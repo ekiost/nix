@@ -16,11 +16,6 @@
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
-    nowplaying-cli-src = {
-      url = "github:kirtan-shah/nowplaying-cli";
-      flake = false;
-    };
-
     xremap-flake.url = "github:xremap/nix-flake";
 
     plasma-manager = {
@@ -39,7 +34,6 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
-      nowplaying-cli-src,
       xremap-flake,
       plasma-manager,
       nixos-wsl,
@@ -56,7 +50,7 @@
         specialArgs = { inherit self user nixpkgs; };
         modules = [
           xremap-flake.nixosModules.default
-          ./modules/nixos
+          ./hosts/nixos
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -64,9 +58,8 @@
               useUserPackages = true;
               users.${user}.imports = [
                 plasma-manager.homeModules.plasma-manager
-                ./modules/home
-                ./modules/home/nixos.nix
-                ./modules/home/plasma.nix
+                ./home
+                ./home/nixos
               ];
             };
           }
@@ -78,15 +71,15 @@
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.default
-          ./modules/wsl
+          ./hosts/wsl
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${user}.imports = [
-                ./modules/home
-                ./modules/home/wsl.nix
+                ./home
+                ./home/wsl
               ];
             };
           }
@@ -96,16 +89,15 @@
       darwinConfigurations.${darwinHostname} = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self user nixpkgs; };
         modules = [
-          ./modules/darwin
+          ./hosts/darwin
           home-manager.darwinModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit nowplaying-cli-src; };
               users.${user}.imports = [
-                ./modules/home
-                ./modules/home/darwin.nix
+                ./home
+                ./home/darwin
               ];
             };
           }

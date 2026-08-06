@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs = {
     fish = {
@@ -16,13 +16,6 @@
       enable = true;
       enableFishIntegration = true;
       enableTransience = true;
-    };
-
-    git = {
-      settings = {
-        user.name = "testkiost";
-        user.email = "slatted.uphill4d@icloud.com";
-      };
     };
   };
 }
