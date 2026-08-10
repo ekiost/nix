@@ -44,6 +44,15 @@
       nixosHostname = "Choon-Keats-NixOS";
       wslHostname = "nixos";
       user = "ekiost";
+
+      # Shared across every host — set once here instead of in each config
+      homeManagerDefaults = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "backup";
+        };
+      };
     in
     {
       nixosConfigurations.${nixosHostname} = nixpkgs.lib.nixosSystem {
@@ -52,16 +61,13 @@
           xremap-flake.nixosModules.default
           ./hosts/nixos
           home-manager.nixosModules.home-manager
+          homeManagerDefaults
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user}.imports = [
-                plasma-manager.homeModules.plasma-manager
-                ./home
-                ./home/nixos
-              ];
-            };
+            home-manager.users.${user}.imports = [
+              plasma-manager.homeModules.plasma-manager
+              ./home
+              ./home/nixos
+            ];
           }
         ];
       };
@@ -73,15 +79,12 @@
           nixos-wsl.nixosModules.default
           ./hosts/wsl
           home-manager.nixosModules.home-manager
+          homeManagerDefaults
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user}.imports = [
-                ./home
-                ./home/wsl
-              ];
-            };
+            home-manager.users.${user}.imports = [
+              ./home
+              ./home/wsl
+            ];
           }
         ];
       };
@@ -91,15 +94,12 @@
         modules = [
           ./hosts/darwin
           home-manager.darwinModules.home-manager
+          homeManagerDefaults
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user}.imports = [
-                ./home
-                ./home/darwin
-              ];
-            };
+            home-manager.users.${user}.imports = [
+              ./home
+              ./home/darwin
+            ];
           }
           nix-homebrew.darwinModules.nix-homebrew
           {
