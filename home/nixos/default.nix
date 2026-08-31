@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./plasma.nix
+    ../zed.nix
   ];
 
   programs = {

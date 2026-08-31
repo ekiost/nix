@@ -47,7 +47,10 @@
     };
   };
 
-  environment.plasma6.excludePackages = [ pkgs.kdePackages.konsole ];
+  environment.plasma6.excludePackages = [
+    pkgs.kdePackages.konsole
+    pkgs.kdePackages.kate
+  ];
 
   services = {
     xserver = {
@@ -91,9 +94,6 @@
       "wheel"
     ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   nix.settings.experimental-features = [
