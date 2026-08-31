@@ -71,7 +71,7 @@
           "/Applications/Photomator.app"
           "/System/Applications/Notes.app"
           "/System/Applications/Music.app"
-          "/Applications/Visual Studio Code.app"
+          "/Applications/Zed.app"
           "/System/Applications/Utilities/Terminal.app"
           "/System/Applications/System Settings.app"
         ];
