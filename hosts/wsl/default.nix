@@ -3,9 +3,9 @@
 {
   security = {
     sudo.wheelNeedsPassword = true;
-    # pki.certificateFiles = [
-    #   ./certs/corporate-chain.pem
-    # ];
+    pki.certificateFiles = [
+      ./certs/corporate-chain.pem
+    ];
   };
 
   programs = {
