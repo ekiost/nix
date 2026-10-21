@@ -43,6 +43,57 @@ sudo nixos-rebuild switch --flake ~/.config/nix#Choon-Keats-NixOS
 
 ---
 
+### WSL (NixOS-WSL)
+
+1. Download `nixos.wsl` from the latest NixOS-WSL release.
+
+2. Install it from PowerShell:
+```powershell
+wsl --install --from-file nixos.wsl
+```
+
+3. Open NixOS:
+```powershell
+wsl -d NixOS
+```
+
+4. Set password:
+```bash
+passwd
+# or
+sudo passwd nixos
+```
+
+5. Update channels:
+```bash
+sudo nix-channel --update
+```
+
+6. Clone config:
+```bash
+nix-shell -p git
+git clone https://github.com/ekiost/nix.git ~/.config/nix
+```
+
+7. Apply config:
+```bash
+sudo nixos-rebuild switch --flake ~/.config/nix#Choon-Keats-NixOS
+```
+
+8. Change default username:
+- Set `wsl.defaultUser = "<your-username>";` in your NixOS config.
+- Apply and restart distro:
+```bash
+sudo nixos-rebuild boot
+```
+```powershell
+wsl -t NixOS
+wsl -d NixOS --user root exit
+wsl -t NixOS
+```
+
+---
+
 ## Daily Use
 
 Update config:
