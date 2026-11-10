@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs = {
     fish = {
@@ -101,5 +101,60 @@
     };
 
     git-credential-oauth.enable = true;
+
+    claude-code = {
+      enable = true;
+      mutableSettings = true; # Claude Code still writes plugins/theme here
+      settings.statusLine = {
+        type = "command";
+        padding = 0;
+        command = toString (
+          pkgs.writeShellScript "claude-statusline" ''
+            input=$(cat)
+            # Keep the latest input around for checking field names
+            printf '%s' "$input" > "$HOME/.cache/claude-statusline-input.json" 2>/dev/null
+            jq() { ${pkgs.jq}/bin/jq -r "$1" <<< "$input"; }
+
+            # 10-cell bar: green < 50%, yellow < 80%, red after
+            bar() {
+              pct=$(printf '%.0f' "$1")
+              filled=$(( (pct + 5) / 10 ))
+              [ "$filled" -gt 10 ] && filled=10
+              cells=""
+              for i in 1 2 3 4 5 6 7 8 9 10; do
+                if [ "$i" -le "$filled" ]; then cells="$cells█"; else cells="$cells░"; fi
+              done
+              if [ "$pct" -ge 80 ]; then color='\033[31m'
+              elif [ "$pct" -ge 50 ]; then color='\033[33m'
+              else color='\033[32m'; fi
+              printf '%b%s\033[0m %s%%' "$color" "$cells" "$pct"
+            }
+
+            model=$(jq '.model.display_name // "?"')
+            dir=$(jq '.workspace.current_dir // .cwd')
+            cost=$(jq '.cost.total_cost_usd // 0')
+            ctx=$(jq '.context_window.used_percentage // empty')
+            five=$(jq '.rate_limits.five_hour.used_percentage // empty')
+            week=$(jq '.rate_limits.seven_day.used_percentage // empty')
+
+            out="[$model] $(basename "$dir")"
+
+            # --no-optional-locks avoids fighting Claude's own git calls over the index lock
+            if branch=$(${pkgs.git}/bin/git -C "$dir" --no-optional-locks branch --show-current 2>/dev/null) && [ -n "$branch" ]; then
+              dirty=""
+              [ -n "$(${pkgs.git}/bin/git -C "$dir" --no-optional-locks status --porcelain 2>/dev/null | head -1)" ] && dirty="*"
+              out="$out  $branch$dirty"
+            fi
+
+            [ -n "$ctx" ] && out="$out  ctx $(bar "$ctx")"
+            [ -n "$five" ] && out="$out  5h $(bar "$five")"
+            [ -n "$week" ] && out="$out  7d $(bar "$week")"
+            out="$out  \$$(printf '%.2f' "$cost")"
+
+            printf '%s' "$out"
+          ''
+        );
+      };
+    };
   };
 }
